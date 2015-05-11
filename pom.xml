@@ -25,11 +25,23 @@
 
   <repositories>
         
-        <!-- Repository where we can found the storm dependencies  -->
-        <repository>
-            <id>clojars.org</id>
-            <url>http://clojars.org/repo</url>
-        </repository>
+      <repository>
+          <releases>
+              <enabled>true</enabled>
+          </releases>
+          <snapshots>
+              <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <url>http://repo1.maven.org/maven2/</url>
+      </repository>
+
+      <!-- Repository where we can found the storm dependencies  -->
+      <!--<repository>-->
+          <!--<id>clojars.org</id>-->
+          <!--<url>http://clojars.org/repo</url>-->
+      <!--</repository>-->
+
 
   </repositories>
 
@@ -37,9 +49,9 @@
 
         <!-- Storm Dependency -->
         <dependency> 
-          <groupId>storm</groupId>
-          <artifactId>storm</artifactId>
-          <version>0.7.1</version>
+          <groupId>org.apache.storm</groupId>
+          <artifactId>storm-core</artifactId>
+          <version>0.9.4</version>
        </dependency>
 
   </dependencies>

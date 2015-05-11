@@ -65,6 +65,7 @@ public class WordReader extends BaseRichSpout {
 	public void open(Map conf, TopologyContext context,
 			SpoutOutputCollector collector) {
 		try {
+			System.out.println("------> conf.get(\"wordsFile\").toString() is: [" + conf.get("wordsFile").toString() + "]");
 			this.fileReader = new FileReader(conf.get("wordsFile").toString());
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException("Error reading file ["+conf.get("wordFile")+"]");

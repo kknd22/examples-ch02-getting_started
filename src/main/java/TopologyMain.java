@@ -15,12 +15,16 @@ public class TopologyMain {
 		builder.setSpout("word-reader",new WordReader());
 		builder.setBolt("word-normalizer", new WordNormalizer())
 			.shuffleGrouping("word-reader");
-		builder.setBolt("word-counter", new WordCounter(),1)
-			.fieldsGrouping("word-normalizer", new Fields("word"));
-		
+		builder.setBolt("word-counter", new WordCounter(),3)
+				//.shuffleGrouping("word-normalizer");
+		.fieldsGrouping("word-normalizer", new Fields("word"));
+
         //Configuration
 		Config conf = new Config();
-		conf.put("wordsFile", args[0]);
+		if (args.length == 0)
+			conf.put("wordsFile", "src/main/resources/words.txt");
+		else
+			conf.put("wordsFile", args[0]);
 		conf.setDebug(false);
         //Topology run
 		conf.put(Config.TOPOLOGY_MAX_SPOUT_PENDING, 1);
